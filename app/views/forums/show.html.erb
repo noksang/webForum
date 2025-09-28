@@ -1,0 +1,19 @@
+<h1><%= @forum.thread %></h1>
+<p><b>Posted by </b> <%= @forum.user.email %>, <%= time_ago_in_words(@forum.created_at) %> ago</p>
+<p><%= simple_format(@forum.content) %></p>
+
+<h3>comments:</h3>
+<%= render @forum.comments %>
+
+<h3>Reply to the thread:</h3>
+<%= render 'comments/form' %>
+
+<%= link_to "Back", forums_path %>
+<% if  user_signed_in? %>
+      <% if @forum.user_id == curreant_user.id %>
+            <%= link_to "Edit", edit_forum_path(@forum) %> 
+            <%= link_to "Delete", forum_path(@forum),
+                  method: :delete,
+                  data: { turbo_confirm: "Are you sure you want to delete this thread?" } %>
+      <% end %>
+<% end %>
