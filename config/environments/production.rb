@@ -87,6 +87,4 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-  config.solid_cache.key_hash_stage = :indexed # this is the default so you can also remove it instead
 end
