@@ -8,8 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+@use "bootstrap";
 body {
   font-weight: 300; // ตัวอักษรบางทั้งเว็บ
 }

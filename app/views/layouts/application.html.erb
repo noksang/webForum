@@ -33,7 +33,7 @@
           </li>
           <% if user_signed_in? %>
             <li class="nav-item mx-2">
-              <%= link_to "Sign Out", "#", class: "nav-link",
+              <%= link_to "Sign Out", destroy_user_session_path, class: "nav-link",
                 onclick: "document.getElementById('logout_form').submit(); return false;" %>
             </li>
           <% else %>
@@ -51,10 +51,10 @@
     </nav>
 
     <!-- hidden form สำหรับ log out -->
-    <% if user_signed_in? %>
-      <%= form_with url: destroy_user_session_path, method: :delete, id: "logout_form", style: "display:none;" do |f| %>
-      <% end %>
-    <% end %>
+    <%# if user_signed_in? %>
+      <%#= form_with url: destroy_user_session_path, method: :delete, id: "logout_form", style: "display:none;" do |f| %>
+      <%# end %>
+    <%# end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

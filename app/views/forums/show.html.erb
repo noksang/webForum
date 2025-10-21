@@ -10,7 +10,7 @@
 
 <%= link_to "Back", forums_path %>
 <% if  user_signed_in? %>
-      <% if @forum.user_id == curreant_user.id %>
+      <% if @forum.user_id == current_user.id %>
             <%= link_to "Edit", edit_forum_path(@forum) %> 
             <%= link_to "Delete", forum_path(@forum),
                   method: :delete,

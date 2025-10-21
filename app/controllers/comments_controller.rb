@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 before_action :authenticate_user!
 before_action :find_forum
-before_action :find_comment, only: [:edit, :update, ::destroy]
+before_action :find_comment, only: [:edit, :update, :destroy]
     
     def create
         @forum = Forum.find(params[:forum_id])
@@ -21,6 +21,10 @@ before_action :find_comment, only: [:edit, :update, ::destroy]
             render 'edit'
         end
     end
+
+    def edit
+    end
+
     def destroy
         @comment.destroy
         redirect_to forums_path(@forum)
