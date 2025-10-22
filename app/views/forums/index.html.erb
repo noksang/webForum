@@ -1,5 +1,14 @@
-<% @forums.each do |forum| %>
-  <h2><%= forum.thread %></h2>
-  <%= link_to "View Forum Thread", forum_path(forum), class: "btn btn-primary" %>
-<% end %>
-<%= link_to "New Forum Thread", new_forum_path %>
+<!-- หัวเรื่อง -->
+<h1 class="page-title">Forums</h1>
+
+<div class="forum-grid">
+  <% @forums.each do |forum| %>
+    <article class="forum-card">
+      <h2 class="forum-title"><%= forum.thread %></h2>
+
+      <div class="forum-actions">
+        <%= link_to "View Forum Thread", forum_path(forum), class: "btn btn-ghost" %>
+      </div>
+    </article>
+  <% end %>
+</div>

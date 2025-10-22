@@ -23,27 +23,43 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-lg navbar-nav bg-body-tertiary">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to "Home", root_path, class: "navbar-brand" %>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, data: { "turbo_method": :delete } %></li>
-          <% else %>
-            <li><%= link_to "Log In", new_user_session_path %></li>
-          <% end %>
-        </ul>
+  <!-- แถบบนขวา -->
+    <!-- ดูตัวอย่างที่นี่: https://getbootstrap.com/docs/5.3/components/navbar/#containers -->
+    <!-- navbar: https://getbootstrap.com/docs/5.3/components/navbar/#text -->
+    <!-- สำหรับ custom css ที่แกใส่ไว้ใน app/forums/index.html.erb
+         ส่วนนั้นจะไปอยู่ใน app/assets/application.scss แทน
+         หากทำการแก้ไขไฟล์ตระกูล .scss อย่าลืมรันคำสั่ง
+         ```pwsh
+         rails assets:precompile
+         rm .\public\assets\.manifest.json
+         # ถ้าใช้ใน cmd ให้ใช้คำสั่งนี้แทน
+         del public\assets\.manifest.json
+         # ดูดีๆ ด้วยว่าตำแหน่งเราตอนนี้อยู่ตอนไหน ตำแหน่งต้องอยู่ที่ webForum-win พอดี ไม่งั้นมันจะหาไม่เจอ
+         # วิธีเช็คตำแแหน่ง
+         # powershell
+         pwd
+         # cmd
+         cd
+         # เป็น cd เปล่าๆ ไม่มีอะไรต่อท้าย ใน cmd จะใช้ในการแสดงตำแหน่งปัจจุบัน
+         ```
+     -->
+    <div class="container top-bar">
+      <div class="navbar-header">
+        <%= link_to "Home", root_path, class: "navbar-brand" %>
+      </div>
+      <div class="right-buttons">
         <% if user_signed_in? %>
-          <p><%= link_to "New Forum Thread", new_forum_path, class: "navbar-right navbar-text navbar-link" %></p>
+          <%= link_to "New Forum Thread", new_forum_path, class: "btn btn-primary" %>
+        <% end %>
+        <%# ดูตัวอย่างที่นี่: https://getbootstrap.com/docs/5.3/components/buttons/#variants %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
+        <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo_method": :delete }, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <%= yield %>
   </body>

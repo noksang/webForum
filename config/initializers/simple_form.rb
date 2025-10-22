@@ -74,7 +74,8 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  # ดูตัวอย่างที่นี่: https://getbootstrap.com/docs/5.3/components/buttons/#outline-buttons
+  config.button_class = 'btn btn-outline-primary'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
