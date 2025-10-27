@@ -30,7 +30,7 @@ gem "solid_queue"
 gem "solid_cable"
 
 #http://rubygems.org/
-gem 'simple_form', '~> 5.3', '>= 5.3.1'
+gem 'simple_form', '~> 5.4'
 gem 'bootstrap', '~> 5.3'
 
 gem 'devise', '~> 4.9', '>= 4.9.4'
