@@ -21,6 +21,7 @@ before_action :authenticate_user!, except: [:index, :show]
       # rescue_from ActiveRecord::RecordInvalid, :with => :handler_method
       # https://guides.rubyonrails.org/error_reporting.html#manually-reporting-errors
     rescue ActiveRecord::RecordInvalid => e
+      puts params.inspect
       Rails.error.unexpected(e)
     end
   end
@@ -43,7 +44,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
   private
   def forum_params
-    params.require(:forum).permit(:thread, :content)
+    params.require(:forum).permit(:thread, :content, :user_id)
   end
 
   def forum_finding
