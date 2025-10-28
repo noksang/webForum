@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
 before_action :forum_finding, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!, only: [:new]
+before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @forums = Forum.all.order("created_at DESC")
@@ -15,20 +15,13 @@ before_action :authenticate_user!, only: [:new]
   end
 
   def create
-    @forum = Forum.new(forum_params)
-    unless @forum.save
-      render inline:
-      "
-      <% @forum.errors.full_messages.each do |err| %>
-        <%= err %>
-      <% end %>
-      <br>
-      @forum.id = <%= @forum.id %><br>
-      @forum.thread = <%= @forum.thread %><br>
-      @forum.content = <%= @forum.content %><br>
-      @forum.user_id = <%= @forum.user_id %><br>
-      current_user.id = <%= current_user.id %><br>
-      ", status: :unprocessable_entity
+    begin
+      @forum = Forum.create!(forum_params)
+      # https://stackoverflow.com/a/6773038
+      # rescue_from ActiveRecord::RecordInvalid, :with => :handler_method
+      # https://guides.rubyonrails.org/error_reporting.html#manually-reporting-errors
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.error.unexpected(e)
     end
   end
 
