@@ -16,10 +16,19 @@ before_action :authenticate_user!, only: [:new]
 
   def create
     @forum = Forum.new(forum_params)
-    if @forum.save
-      redirect_to root_path
-    else
-      render 'new'
+    unless @forum.save
+      render inline:
+      "
+      <% @forum.errors.full_messages.each do |err| %>
+        <%= err %>
+      <% end %>
+      <br>
+      @forum.id = <%= @forum.id %><br>
+      @forum.thread = <%= @forum.thread %><br>
+      @forum.content = <%= @forum.content %><br>
+      @forum.user_id = <%= @forum.user_id %><br>
+      current_user.id = <%= current_user.id %><br>
+      ", status: :unprocessable_entity
     end
   end
 
