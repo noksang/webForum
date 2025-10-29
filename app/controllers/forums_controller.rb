@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
 before_action :forum_finding, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!, except: [:index, :show]
+before_action :authenticate_user!, only: [:new]
 
   def index
     @forums = Forum.all.order("created_at DESC")
@@ -11,12 +11,12 @@ before_action :authenticate_user!, except: [:index, :show]
   end
 
   def new
-    @forum = Forum.new
+    @forum = current_user.forums.build
   end
 
   def create
     begin
-      @forum = Forum.create!(forum_params)
+      @forum = current_user.forums.build(forum_params)
       # https://stackoverflow.com/a/6773038
       # rescue_from ActiveRecord::RecordInvalid, :with => :handler_method
       # https://guides.rubyonrails.org/error_reporting.html#manually-reporting-errors
@@ -44,7 +44,7 @@ before_action :authenticate_user!, except: [:index, :show]
 
   private
   def forum_params
-    params.require(:forum).permit(:thread, :content, :user_id)
+    params.require(:forum).permit(:thread, :content)
   end
 
   def forum_finding
