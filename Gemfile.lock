@@ -78,7 +78,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
-    benchmark (0.4.1)
+    benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
@@ -116,17 +116,20 @@ GEM
     dotenv (3.1.8)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (5.1.1)
+    erb (5.1.3)
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
     fiddle (1.1.8)
-    fugit (1.11.2)
-      et-orbi (~> 1, >= 1.2.11)
+    fugit (1.12.1)
+      et-orbi (~> 1.4)
       raabro (~> 1.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
     google-protobuf (4.33.0-x64-mingw-ucrt)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.0-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
     i18n (1.14.7)
@@ -188,6 +191,8 @@ GEM
     net-ssh (7.3.0)
     nio4r (2.7.4)
     nokogiri (1.18.10-x64-mingw-ucrt)
+      racc (~> 1.4)
+    nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
@@ -295,6 +300,8 @@ GEM
     rubyzip (3.2.0)
     sass-embedded (1.93.2-x64-mingw-ucrt)
       google-protobuf (~> 4.31)
+    sass-embedded (1.93.2-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
     securerandom (0.4.1)
     selenium-webdriver (4.37.0)
       base64 (~> 0.2)
@@ -314,11 +321,11 @@ GEM
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (1.2.1)
+    solid_queue (1.2.3)
       activejob (>= 7.1)
       activerecord (>= 7.1)
       concurrent-ruby (>= 1.3.1)
-      fugit (~> 1.11.0)
+      fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
     sqlite3 (2.7.4)
@@ -335,6 +342,7 @@ GEM
     stringio (3.1.7)
     thor (1.4.0)
     thruster (0.1.16)
+    thruster (0.1.16-x86_64-linux)
     timeout (0.4.3)
     tsort (0.2.0)
     turbo-rails (2.0.17)
@@ -367,6 +375,7 @@ GEM
 
 PLATFORMS
   x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
