@@ -23,6 +23,12 @@ before_action :authenticate_user!, only: [:new]
     rescue ActiveRecord::RecordInvalid => e
       puts params.inspect
       Rails.error.unexpected(e)
+    rescue Devise::UnpermittedParameters => e
+      puts params.inspect
+      Rails.error.unexpected(e)
+    rescue Error => e
+      puts 'Unknown Error'
+      Rails.error.unexpected(e)
     end
   end
 
