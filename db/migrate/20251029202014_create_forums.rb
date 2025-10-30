@@ -1,4 +1,4 @@
-class CreateForums < ActiveRecord::Migration[8.0]
+class CreateForums < ActiveRecord::Migration[8.1]
   def change
     create_table :forums do |t|
       t.string :thread
