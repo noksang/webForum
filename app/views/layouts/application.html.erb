@@ -55,7 +55,8 @@
         <%# ดูตัวอย่างที่นี่: https://getbootstrap.com/docs/5.3/components/buttons/#variants %>
         <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
         <% if user_signed_in? %>
-          <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo_method": :delete }, class: "btn btn-danger" %>
+          <%# https://stackoverflow.com/a/71117909 %>
+          <%= link_to "Sign Out", destroy_user_session_path, "data-turbo-method": :delete, class: "btn btn-danger" %>
         <% else %>
           <%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
         <% end %>

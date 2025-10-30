@@ -16,7 +16,7 @@ before_action :authenticate_user!, only: [:new]
 
   def create
     begin
-      @forum = current_user.forums.build(forum_params)
+      current_user.forums.build(forum_params).save!
       redirect_to root_path
       # https://stackoverflow.com/a/6773038
       # rescue_from ActiveRecord::RecordInvalid, :with => :handler_method
