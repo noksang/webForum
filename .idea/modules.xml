@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WebForum-win2.iml" filepath="$PROJECT_DIR$/.idea/WebForum-win2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nok-webForum.iml" filepath="$PROJECT_DIR$/.idea/nok-webForum.iml" />
     </modules>
   </component>
 </project>
